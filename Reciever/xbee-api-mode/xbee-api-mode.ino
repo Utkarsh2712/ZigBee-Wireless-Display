@@ -23,6 +23,7 @@ void loop() {
       Serial.println(xbee.getResponse().getApiId());
       if (xbee.getResponse().getApiId() == ZB_RX_RESPONSE) {
         xbee.getResponse().getZBRxResponse(rx);
+        for (int i = 0; i < rx.getDataLength(); i++) {
           sample += (char)rx.getData(i);
         }
         lcd.print(sample);
